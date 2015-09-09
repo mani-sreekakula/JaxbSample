@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<xsd:element name="transactionID" type="xsd:string" />
+	<xsd:element name="data1" type="xsd:string" />
+	<xsd:element name="data2" type="xsd:string" />
+	<xsd:element name="data3" type="xsd:string" />
+	<xsd:element name="data4" type="xsd:string" />
+	<xsd:element name="data5" type="xsd:string" />
+	<xsd:element name="data6" type="xsd:string" />
+	<xsd:element name="data7" type="xsd:string" />
+	<xsd:element name="templateID" type="xsd:string" />
+	<xsd:element name="templateName" type="xsd:string" />
+	<xsd:element name="templateCode" type="xsd:string" />
+	<xsd:element name="templateType" type="xsd:string" />
+	<xsd:element name="manualPostingNotice" type="xsd:string" />
+	<xsd:element name="sequenceNumber" type="xsd:string" />
+	<xsd:element name="column1" type="xsd:string" />
+	<xsd:element name="column2" type="xsd:string" />
+	<xsd:element name="column3" type="xsd:string" />
+	<xsd:element name="column4" type="xsd:string" />
+	<xsd:element name="column5" type="xsd:string" />
+	<xsd:element name="name" type="xsd:string" />
+	<xsd:element name="value" type="xsd:string" />
+
+	<xsd:element name="commonData">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="transactionID" />
+				<xsd:element ref="data1" />
+				<xsd:element ref="data2" />
+				<xsd:element ref="data3" />
+				<xsd:element ref="data4" />
+				<xsd:element ref="data5" />
+				<xsd:element ref="data6" />
+				<xsd:element ref="data7" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="grid">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="column1" />
+				<xsd:element ref="column2" />
+				<xsd:element ref="column3" />
+				<xsd:element ref="column4" />
+				<xsd:element ref="column5" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="variable">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="name" />
+				<xsd:element ref="value" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="variables">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="variable" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="grids">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="grid" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="template">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="transactionID" />
+				<xsd:element ref="templateID" />
+				<xsd:element ref="templateName" />
+				<xsd:element ref="templateCode" />
+				<xsd:element ref="templateType" />
+				<xsd:element ref="manualPostingNotice" />
+				<xsd:element ref="sequenceNumber" />
+				<xsd:element ref="grids" />
+				<xsd:element ref="variables" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+		<xsd:element name="templates">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="template" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+			<xsd:element name="orders">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="commonData" />
+				<xsd:element ref="templates" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="shiporder">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="orders" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="listVariables">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element maxOccurs="unbounded" minOccurs="1" ref="variable"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+</xsd:schema>
